@@ -1,0 +1,134 @@
+header#header {
+    height: 56px;
+    display: flex;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span.guide-icon {
+    padding: 8px;
+}
+
+span.logo-icon {
+    padding: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.form-group {
+    align-items: center;
+    background-color: var(--ytd-searchbox-background);
+    border: 1px solid var(--ytd-searchbox-legacy-border-color);
+    border-right: none;
+    border-radius: 2px 0 0 2px;
+    box-shadow: inset 0 1px 2px var(--ytd-searchbox-legacy-border-shadow-color);
+    color: var(--ytd-searchbox-text-color);
+    /* padding: 2px 6px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #80808085;
+    flex: 1;
+}
+
+input.form-control {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+section.search-container {
+    display: flex;
+    margin: 0 0 0 40px;
+    padding: 0 4px;
+    align-items: center;
+    height: 40px;
+    padding: 2px 6px;
+    /* justify-content: center; */
+    /* border: 1px solid #80808085; */
+    width: 728px;
+}
+
+span.voice-icon {
+    border: 1px solid var(--ytd-searchbox-legacy-button-border-color);
+    background-color: var(--ytd-searchbox-legacy-button-color);
+    border-radius: 0 2px 2px 0;
+    margin-left: 10px;
+    cursor: pointer;
+    height: 40px;
+    background-color: #f8f8f8;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    border-radius: 63%;
+    align-items: center;
+    justify-content: center;
+}
+section.profile-container>div {
+    margin-right: 30px;
+}
+
+section.profile-container {
+    display: flex;
+    align-items: center;
+    /* min-width: 300px; */
+}
+
+span.search-icon {
+    border: 1px solid var(--ytd-searchbox-legacy-button-border-color);
+    background-color: #f8f8f8;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    height: 40px;
+    width: 64px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 1px solid #d3d3d3;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-top-width: 0;
+}
+.profile {
+    width: 32px;
+    height: 32px;
+    background-color: gainsboro;
+    border-radius: 50%;
+}
+#loader{
+    text-align: center;
+    padding: 10px;
+    color: red;
+    font-size: 15px;
+}
+section#content {
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+.thumbnail {
+    flex: 1;
+    min-width: 300px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    padding: 10px;
+    /* border: 1px solid; */
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+span.id {
+    font-size: 36px;
+    text-align: center;
+    display: block;
+}
+.error {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    text-align: center;
+    width: 100%;
+    color: red;
+    font-size: 40px;
+}
