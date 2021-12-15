@@ -9,17 +9,17 @@ const App = () => {
 
   root.innerHTML = `<header id="header">
     <section class="logo-container">
-      <span class="guide-icon">
-        <img src="./images/guide.PNG" alt="Guid" />
+      <span class="guide-icon" onmouseover="handleGuide()">
+        <img src="./images/guide.PNG" alt="Guide" />
       </span>
-      <span class="logo-icon">
+      <span class="logo-icon" onmouseover="handleLogo()">
         <img src="./images/youtube.PNG" alt="Logo" srcset="" />
       </span>
     </section>
     <section class="search-container">
       <div class="form-group">
-        <input type="text" class="form-control" />
-        <span class="search-icon"
+        <input type="text" class="form-control" onfocus="handleFocus(this,event)" onkeyup="handleSearch()" />
+        <span class="search-icon" onclick="handleSearch()"
           ><img src="./images/search.PNG" alt="search"
         /></span>
       </div>
@@ -57,17 +57,42 @@ const App = () => {
   `;
 };
 App();
+const handleLogo = () => {
+  // alert("You clicked on logo")
+  const loader = document.querySelector("#loader")
+  loader.innerText = "You clicked on logo"
+}
+const handleGuide = () => {
+  // alert("You clicked on Guide")
+  const loader = document.querySelector("#loader")
+  loader.innerText = "You clicked on Guide"
+}
+const handleFocus = (event,e) => {
+  // alert("You clicked on Guide")
+  // console.log(event);
+  event.style.backgroundColor ="Yellow"
+  const loader = document.querySelector(".form-group")
+  loader.style.backgroundColor ="Yellow";
+  e.stopPropagation();
+}
+// document.body.addEventListener("click", ()=> {
+//   const loader = document.querySelector(".form-group")
+//   loader.style.backgroundColor ="unset";
+//   const control = document.querySelector(".form-control")
+//   control.style.backgroundColor ="unset"
+// })
+
 const fetchPosts = () => {
   const loader = document.getElementById("loader");
   loader.style.display = "block";
   const content = document.getElementById("content");
-  fetch("https://jsonplaceholder.typicode.com/photos")
+  fetch("https://jsonplaceholder.typicode.com/posts")
     .then((response) => response.json())
     .then((json) => {
       loader.style.display = "none";
       posts = json;
       if(json){
-        renderPosts();
+        renderPosts(posts);
       }
       
     }).catch(error => {
@@ -80,16 +105,36 @@ const fetchPosts = () => {
     });
 };
 
-const renderPosts = ()=> {
-  posts.forEach(item => {
-    content.innerHTML += `<div class="thumbnail">
-    <span class="id">${item.id}</span>
-    <header class="title">${item.title}</header>
-
-    <p class="desc">
-    <img src=${item.thumbnailUrl} alt="" />
-    </p>
-    </div>`
-  });
+const renderPosts = (items)=> {
+  if(items.length > 0){
+    items.forEach(item => {
+      content.innerHTML += `<div class="thumbnail">
+      <span class="id">${item.id}</span>
+      <header class="title">${item.title}</header>
+  
+      <p class="desc">
+      <img src=${item.thumbnailUrl} alt="" />
+      </p>
+      </div>`
+    });
+  }else{
+    content.innerHTML = `<h1>there is no data with this search</h1>`
+  }
+ 
 }
 fetchPosts();
+
+const handleSearch = () => {
+  const input = document.querySelector(".form-control").value
+  console.log(input);
+  content.innerHTML = "";
+  if(input!== ''){
+    const filterPosts = posts.filter(item => (item.id == input || item.title.includes(input)));
+    
+    renderPosts(filterPosts)
+  }else{
+    
+    renderPosts(posts)
+  }
+ 
+}
